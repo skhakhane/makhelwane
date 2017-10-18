@@ -1,0 +1,105 @@
+<html >
+  <head>
+    <title>Makhelwane</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.min.js"></script>
+    <!--<script src="/chart.js/dist/Chart.min.js"></script>
+    <script src="/angular-chart.js/angular-chart.js"></script>--
+    <script src="javascripts/chart.js/dist/Chart.js"></script>
+    <script src="javascripts/angular-chart.js/dist/angular-chart.min.js"></script>
+    <script src="javascripts/tc-angular-chartjs/dist/tc-angular-chartjs.min.js"></script>-->
+
+    <script type="text/javascript" src="javascripts/fusioncharts/fusioncharts.js"></script>
+    
+    <script type="text/javascript" src="javascripts/fusioncharts/angular-fusioncharts.min.js"></script>
+
+    <script src="../node_modules/holder/holder.js"></script>
+    <!-- Google Maps API -->
+    
+    <!-- Modernizr -->
+    <script src="../node_modules/modernizr/bin/modernizr"></script>
+    <!-- JS Source -->
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/angular/angular.js"></script>
+    <!--<script src="../bower_components/angular-route/angular-route.js"></script>-->
+    <script src="../node_modules/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+    <script src="javascripts/makhelwaneApp.js"></script>
+
+    
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+  </head>
+  <body ng-app="makhelwaneApp">
+      <nav id="headNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="#"> <img src="/images/fnb1.png" width="133" height="70" class="align-top" alt="">-->
+              
+            </a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse text-center" id="navLinks">
+              
+             <div class="page-header nav navbar-nav text-center" >
+                <h1>Makhelwane</h1>
+             </div>
+             <div class="pull-right" ng-show="authenticated">
+                 <ul class="nav navbar-nav" >
+                     <li><a href="#!/dashboard">Dashboard</a></li>
+                     <li><a href="#!/main">Incidents</a></li>
+                 </ul>
+                         
+                 <ul class="nav navbar-nav navbar-right" >
+                    <li><a href="#" class="fa fa-sign-out" ng-click="signout()">Sign Out</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">  
+                        {{current_user}} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">My Profile</a></li>
+                          <li><a>Change My Password</a></li>
+                          <li><a href="#!/admin">Manage User Accounts</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+              </div>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    
+     <div ng-view>
+
+      </div>
+      
+      
+      <footer >
+      <div id="footNav" class="text-center">
+         <p>&copy Copyright Epicon 2017</p>
+      </div>
+    </footer>
+     <script src="javascripts/ui-bootstrap-tpls.js"></script>
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.min.js"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAee-ifzfjKi3O30Vw8X0PFRUFK5fGK8UA&callback=initMap"></script>
+    <!--<script src="javascripts/charts.js"></script>-->
+    
+
+    
+  </body>
+  
+</html>
+

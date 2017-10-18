@@ -1,0 +1,151 @@
+<div class="container1">
+        <div class="header">
+           
+        </div>
+        <!-- Map and Side Panel -->
+        <div class="row content">
+            <!-- Google Map -->
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading main-color-bg">
+                        <h1 class="panel-title text-center"><strong>INCIDENT MAP </strong></h1>
+                    </div>
+                    <!-- Panel Body -->
+                    <div class="panel-body" >
+                      <div id="map" style="width:100%; height:70%" ></div>
+                      <div id="repeat" ng-repeat="incident in incs| orderBy: 'capture'">
+                      		<a id="incident_container" href="#" ng-click="">
+                      			<label id="names">{{incident.comment}}</label>
+                      		</a>
+                      </div>
+                       <button type="submit" class="btn btn-primary pull-right main-color-bg" ng-click="getIncidents()">Refresh Map</button>
+                    </div>
+                </div>
+                
+            </div>
+            <!-- Side Panel -->
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <!-- Panel Title -->
+                    <div class="panel-heading main-color-bg">
+                        <h2 class="panel-title text-center">Incident Details <span class="glyphicon glyphicon-map-marker"></span></h2>
+                    </div>
+                    <!-- Panel Body -->
+                    <div class="panel-body">
+
+                        <div class="well text-center col-md-offset-2" style="height:250px; width:70%;">
+                           <div class="thumbnail" style="height:80%; width:100%;">
+                              <img src="{{incs.picture}}" alt="" style="height:100%; width:100%;">                           
+                            </div>
+                            <div class="caption">
+        						<h4><strong>Picture of the incident</strong></h4>
+        					</div>
+                        </div>
+                        <p ng-repeat="incident in incs" ></p>
+                        <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+                        <form name ="addForm" novalidate>
+                            <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+                            <div class="form-group">
+                                <label for="capturer">Capturer: <span class="badge">{{incident.length}}</span></label>
+                                <input type="text" class="form-control" id="capturer" placeholder="{{incident.capturer}}" ng-model="incs.capture" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="capturer">Reported on:</label>
+                                <input type="text" class="form-control" id="date" placeholder="{{incident.created_At}}" ng-model="incs.createdAt" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="radio control-label">Comment</label>
+                                
+                                <textarea class="form-control" rows="3" name="comment" id="comment"  placeholder="Comment" ng-model="incs.comment" disabled>{{incident.comment}}</textarea>
+                                  
+                            </div>
+
+                            <!--<div class="form-group" >
+
+                                  <label for="repeatSelect">Assign to:</label>
+							      <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="data.model">
+							         <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>						      
+
+							      </select>
+                              </div>-->
+                            <div class="row text-center">
+                            	<div class="col-md-6">
+                            		<button type="submit" class="btn btn-primary btn-block main-color-bg" ng-click="respond()">Respond</button>
+                            	</div>
+                            	<div class="col-md-6">
+                            	<button type="submit" class="btn btn-primary btn-block main-color-bg" ng-click="assign()" >Assign</button>
+                            		
+                            	</div>
+
+                            </div>
+                            
+                        </form>
+
+
+						  <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(204, 136, 0, 0.5);">
+						    <div class="modal-dialog modal-md" role="document">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						          <h4 class="modal-title" id="myModalLabel"><strong>Incident Response</strong></h4>
+						          
+						        </div>
+						        <div class="modal-body">
+						          
+						          <div class="form-group" >
+						          	   <label for="incident">Incident Description:</label>
+						               <textarea class="form-control" rows="3" name="incident" id="incident"  ng-model="incs.comment" disabled>{{incident.comment}}</textarea>
+						               <br>
+	                                  <label for="repeatSelect">Response Message:</label>
+								      <textarea class="form-control" rows="3" name="comment" id="comment"  placeholder="Response goes in here ...." ng-model="incs.response"></textarea>
+	                              </div>
+						        </div>
+						        <div class="modal-footer">
+						          
+						         
+						         <button type="button" class="btn btn-primary main-color-bg" ng-click="assign({{option.id}})" ng-disabled="addForm.$invalid">Respond</button>
+						         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						                                   
+						        </div>
+						        
+						      </div>
+						    </div>
+						    
+						  </div>
+						  <div class="modal fade" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(204, 136, 0, 0.5);">
+						    <div class="modal-dialog modal-md" role="document">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						          <h4 class="modal-title" id="myModalLabel"><strong>Assign For Action</strong></h4>
+						          
+						        </div>
+						        <div class="modal-body">
+						          
+						          <div class="form-group" >
+						          	   <label for="incident">Incident Description:</label>
+						               <textarea class="form-control" rows="3" name="incident" id="incident"  ng-model="incs.comment" disabled>{{incident.comment}}</textarea>
+						               <br>
+	                                  <label for="repeatSelect">Assign to:</label>
+								      <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="data.model">
+								         <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>	
+								      </select>
+	                              </div>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-primary main-color-bg" ng-click="assign({{option.id}})" ng-disabled="addForm.$invalid">Save</button>
+						         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						        
+						                                   
+						        </div>
+						        
+						      </div>
+						    </div>
+						    
+						  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/> 
+

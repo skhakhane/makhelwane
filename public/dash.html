@@ -1,0 +1,141 @@
+<div class="clearfix">
+      
+  <div  ng-show="authenticated">
+    <section id="main">
+      <div >
+        <div class="row">
+          <div class="col-md-2">
+            
+            <div class="list-group">
+              <a  class="list-group-item active main-color-bg">
+                  Dashboard
+              </a>
+              <a  class="list-group-item" data-toggle="collapse" data-target="#contentCamp">
+                <div>
+                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Incidents <span class="badge pull-right">3</span>
+                    
+                </div>
+              </a>
+               
+              
+               
+
+              <a href="#" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users<span class="badge">4</span></a>
+              
+            
+            </div>
+ 
+          </div>
+          <div class="col-md-10">
+            <div class="panel panel-default">
+              <div class="panel-heading main-color-bg">
+                <h3 class="panel-title">Overview</h3>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-3">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-6 col-md-offset-3">
+                        <h4><br></h4>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <h2><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 23</h2>
+                      <h4>Campaigns</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-6 col-md-offset-3">
+                        <u><strong><h4>Short Messages</h4></strong></u>
+
+                      </div>
+                    </div>
+                    <div class="row text-center">
+                      <div class="col-md-6">
+                        <h2><span class="glyphicon glyphicon-send" aria-hidden="true"></span> 234</h2>
+                        <h4>Sent</h4>
+                      </div>
+                      <div class="col-md-6">
+                        <h2><span class="glyphicon glyphicon-saved" aria-hidden="true"></span> 23</h2>
+                        <h4>Recieved</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-6 col-md-offset-3">
+                        <h4><br></h4>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 4</h2>
+                      <h4>Groups</h4>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="well">
+                    <div class="row">
+                      <div class="col-md-6 col-md-offset-3">
+                        <h4><br></h4>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 2</h2>
+                    <h4>Templates</h4>
+                    </div>
+                    
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="panel panel-default">
+              
+              <div class="panel-body">
+                               
+                <div class="row">
+
+
+
+                     <div ng-controller="MyController">
+                          <div class="col-md-3">
+                            <br>
+                          </div>
+                          <div fusioncharts
+                             width="550"
+                             height="400"
+                             type="doughnut3d"
+                             dataSource="{{myDataSource}}"
+                             class="col-md-6">
+                          </div>
+                          <div class="col-md-3">
+                            <br>
+                          </div>
+                          
+                      </div>
+                      
+
+                </div>
+               
+              </div>
+            </div>
+           
+
+          </div>
+        </div>
+      </div>
+    </section> 
+       
+  </div>
+  
+
+  
+</div>
+        

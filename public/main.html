@@ -1,0 +1,158 @@
+<div class="container1">
+    <div class="header">
+           
+    </div>
+    <!-- Map  Panel -->
+    <div class="row content">
+        <!-- Google Map -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading main-color-bg">
+                    <h1 class="panel-title text-center"><strong>INCIDENT MAP </strong></h1>
+                </div>
+                <!-- Panel Body -->
+                <div class="panel-body" >
+                    <div id="map" style="width:100%; height:90%" >
+                        
+                    </div>
+                    <div id="repeat" ng-repeat="incident in incs| orderBy: 'capture'">
+                      	<a id="incident_container" href="#" ng-click="">
+                      		<label id="names">{{incident.comment}}</label>
+                      	</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right main-color-bg" ng-click="getIncidents()">Refresh Map</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--            Posts  --> 
+    <div class="row" ng-repeat="incident1 in incs1"| orderBy:'created_at':true" ng-class-odd="'odd'" ng-class-even="'even'">
+        <div><br>
+        </div> <!-- Space between posts  -->
+        <div class="col-md-3">
+        </div>
+        <div id = "post" class="col-md-6 container panel panel-default" style="background-color: #efeff5">
+            <div class="panel-heading" style="background-color: #efeff5;">
+                <div class="row">    
+                    <div class="col-sm-2">
+                        <div class="circle" style="height:9%; width:80%;"> 
+                            <!-- <img src="{{incident1.profile}}"  class="rounded-circle" alt="" style="height:80%; width:100%;"> -->
+                            <img src="/uploads/MoeGuns-2017-06-27022938.jpg" alt="profile pic" style="height:100%; width:100%;">
+                        </div> 
+                    </div>
+                    <div class="col-md-5">
+                        <div class="row"> 
+                            <h4>{{incident1.capture}}</h4> 
+                            <small>logged on: {{incident1.createdAt}}</small>                        
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body postBody">
+                <div class="row">
+                    {{incident1.comment}}
+                </div>   
+                <div class="row">
+                    <div class="text-center postPicture" >
+                        <!--<img src="{{incident1.picture}}" class="rounded mx-auto d-block" alt="picture of incident">-->
+                        <img src="/uploads/MoeGuns-2017-09-05-020854.jpg" class="rounded mx-auto d-block" alt="picture of incident" style="height:100%; width:100%;">                      
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer " style="background-color: #efeff5">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a id="incident_respond" ng-click="respond()">
+                            <label>Respond</label>
+                        </a>
+                    </div>
+                    <div class="col-md-2">
+                        <a id="incident_assign"  ng-click="assign()">
+                            <label>Assign</label>
+                        </a>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>             
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>
+        
+
+
+
+
+
+<!-- Modals -->
+
+
+						  <div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(204, 136, 0, 0.5);">
+						    <div class="modal-dialog modal-md" role="document">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						          <h4 class="modal-title" id="myModalLabel"><strong>Incident Response</strong></h4>
+						          
+						        </div>
+						        <div class="modal-body">
+						          
+						          <div class="form-group" >
+						          	   <label for="incident">Incident Description:</label>
+						               <textarea class="form-control" rows="3" name="incident" id="incident"  ng-model="incs.comment" disabled>{{incident.comment}}</textarea>
+						               <br>
+	                                  <label for="repeatSelect">Response Message:</label>
+								      <textarea class="form-control" rows="3" name="comment" id="comment"  placeholder="Response goes in here ...." ng-model="incs.response"></textarea>
+	                              </div>
+						        </div>
+						        <div class="modal-footer">
+						          
+						         
+						         <button type="button" class="btn btn-primary main-color-bg" ng-click="assign({{option.id}})" ng-disabled="addForm.$invalid">Respond</button>
+						         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						                                   
+						        </div>
+						        
+						      </div>
+						    </div>
+						    
+						  </div>
+						  <div class="modal fade" id="assignModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(204, 136, 0, 0.5);">
+						    <div class="modal-dialog modal-md" role="document">
+						      <div class="modal-content">
+						        <div class="modal-header">
+						          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						          <h4 class="modal-title" id="myModalLabel"><strong>Assign For Action</strong></h4>
+						          
+						        </div>
+						        <div class="modal-body">
+						          
+						          <div class="form-group" >
+						          	   <label for="incident">Incident Description:</label>
+						               <textarea class="form-control" rows="3" name="incident" id="incident"  ng-model="incs.comment" disabled>{{incident.comment}}</textarea>
+						               <br>
+	                                  <label for="repeatSelect">Assign to:</label>
+								      <select class="form-control" name="repeatSelect" id="repeatSelect" ng-model="data.model">
+								         <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>	
+								      </select>
+	                              </div>
+						        </div>
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-primary main-color-bg" ng-click="assign({{option.id}})" ng-disabled="addForm.$invalid">Save</button>
+						         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+						        
+						                                   
+						        </div>
+						        
+						      </div>
+						    </div>
+						    
+						  </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/> 
+
