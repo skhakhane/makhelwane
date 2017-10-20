@@ -1,0 +1,6 @@
+{
+	"name": "Makhelwane Application",
+	"description": "A neighborhood watch Application",
+	"repository": "https://github.com/skhakhane/makhelwane",
+    "image": "heroku/nodejs"
+}
